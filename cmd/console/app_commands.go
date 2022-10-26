@@ -32,14 +32,14 @@ import (
 	"github.com/minio/console/restapi"
 )
 
-var appCmds = []cli.Command{
+var appCmds1 = []cli.Command{
 	serverCmd,
 	updateCmd,
 	operatorCmd,
 }
 
 // StartServer starts the console service
-func StartServer(ctx *cli.Context) error {
+func StartServer1(ctx *cli.Context) error {
 	// Load all certificates
 	if err := loadAllCerts(ctx); err != nil {
 		// Log this as a warning and continue running console without TLS certificates

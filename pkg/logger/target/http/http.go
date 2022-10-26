@@ -157,7 +157,7 @@ func (h *Target) logEntry(entry interface{}) {
 		return
 	}
 
-	// Drain any response.
+	// Drain any response.任何响应。
 	xhttp.DrainBody(resp.Body)
 
 	if !acceptedResponseStatusCode(resp.StatusCode) {

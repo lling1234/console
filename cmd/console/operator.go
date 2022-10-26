@@ -102,6 +102,7 @@ var operatorCmd = cli.Command{
 	},
 }
 
+// swagger
 func buildOperatorServer() (*operatorapi.Server, error) {
 	swaggerSpec, err := loads.Embedded(operatorapi.SwaggerJSON, operatorapi.FlatSwaggerJSON)
 	if err != nil {

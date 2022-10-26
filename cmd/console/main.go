@@ -51,10 +51,10 @@ VERSION:
 `
 
 func newApp(name string) *cli.App {
-	// Collection of console commands currently supported are.
+	// Collection of console commands currently supported are.当前支持的控制台命令集合为。
 	var commands []cli.Command
 
-	// Collection of console commands currently supported in a trie tree.
+	// Collection of console commands currently supported in a trie tree.树中当前支持的控制台命令集合。
 	commandsTree := trie.NewTrie()
 
 	// registerCommand registers a cli command.
@@ -62,6 +62,10 @@ func newApp(name string) *cli.App {
 		commands = append(commands, command)
 		commandsTree.Insert(command.Name)
 	}
+	// serverCmd:=appCmds[0]
+	// updateCmd:=appCmds[1]
+	// registerCommand(serverCmd)
+	// registerCommand(updateCmd)
 
 	// register commands
 	for _, cmd := range appCmds {
@@ -74,13 +78,13 @@ func newApp(name string) *cli.App {
 
 		sort.Strings(closestCommands)
 		// Suggest other close commands - allow missed, wrongly added and
-		// even transposed characters
+		// even transposed characters建议其他关闭命令——允许遗漏、错误添加甚至调换字符
 		for _, value := range commandsTree.Walk(commandsTree.Root()) {
 			if sort.SearchStrings(closestCommands, value) < len(closestCommands) {
 				continue
 			}
 			// 2 is arbitrary and represents the max
-			// allowed number of typed errors
+			// allowed number of typed errors 2是任意值，表示允许的最大类型化错误数量
 			if words.DamerauLevenshteinDistance(command, value) < 2 {
 				closestCommands = append(closestCommands, value)
 			}

@@ -53,8 +53,8 @@ func (c *Client) Do(req *http.Request) (*http.Response, error) {
 	return c.Client.Do(req)
 }
 
-// DrainBody close non nil response with any response Body.
-// convenient wrapper to drain any remaining data on response body.
+// DrainBody close non nil response with any response Body.使用任何响应体关闭排水体非nil响应。
+// convenient wrapper to drain any remaining data on response body.方便的包装器，以排泄响应体上的任何剩余数据。
 //
 // Subsequently this allows golang http RoundTripper
 // to re-use the same connection for future requests.

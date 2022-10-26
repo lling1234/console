@@ -24,7 +24,7 @@ import (
 	"github.com/minio/madmin-go"
 )
 
-// ReplacePolicyVariables replaces known variables from policies with known values
+// ReplacePolicyVariables replaces known variables from policies with known values将策略中的已知变量替换为已知值
 func ReplacePolicyVariables(claims map[string]interface{}, accountInfo *madmin.AccountInfo) json.RawMessage {
 	// AWS Variables
 	rawPolicy := bytes.ReplaceAll(accountInfo.Policy, []byte("${aws:username}"), []byte(accountInfo.AccountName))
@@ -37,7 +37,7 @@ func ReplacePolicyVariables(claims map[string]interface{}, accountInfo *madmin.A
 }
 
 func replaceJwtVariables(rawPolicy []byte, claims map[string]interface{}) json.RawMessage {
-	// list of valid JWT fields we will replace in policy if they are in the response
+	// list of valid JWT fields we will replace in policy if they are in the response有效JWT字段列表，如果它们在响应中，我们将在策略中替换它们
 	jwtFields := []string{
 		"sub",
 		"iss",
